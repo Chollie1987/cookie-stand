@@ -1,0 +1,32 @@
+body {
+    background-color: #e9a8a7;
+}
+
+#seattle {
+    font-weight: 900;
+    color: #386459;
+}
+
+#tokyo {
+    font-weight: 900;
+    color: #BB3E03;
+}
+
+#dubai {
+    font-weight: 900;
+    color:#0D5F6F;
+}
+
+#paris {
+    font-weight: 900;
+    color: #9B2226;
+}
+
+#lima {
+    font-weight: 900;
+    color: #724e0993;
+}
+
+img {
+    padding-top: 300px;
+}
