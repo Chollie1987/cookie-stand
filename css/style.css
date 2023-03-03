@@ -1,21 +1,152 @@
 body {
+    background-color: #e2a8a7;
+    margin: 10px 0px 10px 0px;
+        padding: 5px 5px 5px 5px;
+        height: auto;
+        width: auto;
+        border: 8px solid #b06527;
+        border-radius: 3px 3px 3px 3px;
+    }
     
-    background-color: #e9a8a7;
-    
-}
+.homepage-link {
+        text-align: center;
+        padding-top: 100px;
+        font-family: 'Rampart One', cursive;
+    }
 
 #tableEl {
     margin: 0 auto;
     margin-top: 100px;
     border: 2px solid black
+    
 }
 
 th, td {
     text-align: center;
     border: 2px solid black;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 tr{
-    font-weight: 900;
+    font-weight: 600;
     border: 2px solid black;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+.sales-title {
+    color: #467358;
+    font-size: large;
+    font-weight: 900;
+    font-family: 'Rampart One', cursive;
+}
+
+header {
+    text-align: center;
+    font-family: 'Rampart One', cursive;
+    
+}
+
+h1 {
+    color: #467358;
+     
+}
+p {
+    text-align: center;
+    margin: 10px 0px 10px 0px;
+    padding: 5px 5px 5px 5px;
+    height: auto;
+    width: auto;
+    border: 3px solid #b06527;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 5px 8px 4px #6b7c71;
+    color: #467358;
+    font-weight: 700;
+
+    
+}
+
+.chinook {
+    width: 300px;
+    border-radius: 30px 30px 30px 30px;
+    border: solid #b06527;
+    box-shadow: 5px 5px 4px #6b7c71;
+}
+
+.cutter {
+    border: solid #b06527;
+    border-radius: 50%;
+    box-shadow: 5px 5px 4px #6b7c71;
+    margin-right: 100px;
+}
+
+.family {
+   border: solid #b06527;
+   border-radius: 50%;
+   box-shadow: 5px 5px 4px #6b7c71;
+}
+
+.fish {
+    border: solid #b06527;
+    border-radius: 30%;
+    box-shadow: 5px 5px 4px #6b7c71;
+    margin-left: 100px;
+}
+
+.cookie {
+    margin-left: 30px;
+    margin-top: 30px;
+    border: solid #b06527;
+    border-radius: 50%;
+    box-shadow: 5px 5px 4px #6b7c71;
+}
+.shirt {
+    float: right;
+    margin-right: 10px;
+    margin-bottom: 30px;
+    border: solid #b06527;
+    border-radius: 50%;
+    box-shadow: 5px 5px 4px #6b7c71;
+}
+
+.bottom-fish {
+    padding-left: 350px;
+    padding-right: 350px;
+}
+
+h2 {
+    text-align: center;
+    padding-left: 30px;
+    color: #467358;
+    font-family: 'Rampart One', cursive;
+}
+
+ ul {
+    color: #467358;
+    text-align: center;
+    font-family: 'Rampart One', cursive;
+    font-weight: 600;
+ }
+
+ h4 {
+    text-align: center;
+    padding-left: 25px;
+    color: #467358;
+    font-family: 'Rampart One', cursive;
+   
+ }
+
+ h5 {
+    text-align: center;
+    font-family: 'Rampart One', cursive;
+    font-size: small;
+    font-weight: 300;
+ }
+
+ .sales-page {
+    text-align: center;
+    padding-left: 35px;
+    font-family: 'Rampart One', cursive;
+ }
+
+ 
+ 
