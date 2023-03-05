@@ -2,6 +2,7 @@
 
 let tableEl = document.getElementById('tableEl')
 let seattleSales = document.getElementById('seattle');
+let myLocation = document.getElementById('location-form');
 
 let timeHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm'];
 
@@ -59,12 +60,7 @@ function makeTableBody(){
     let footerName = document.createElement('th');
     footerName.textContent = 'Hourly Total';
     footerRow.appendChild(footerName);
-    //loop through hours
-    //for each hour establish an hourly total variable
-    //nested loop through locations allCities
-    //add the total cookies per customer hour to that hourly variable
-    //create a cell and make the text content the hourly total
-    //append it to the footer row
+   
     let grandTotal = 0
     for(let i = 0; i < timeHours.length; i++){
         let hourlyTotal = 0
@@ -81,11 +77,12 @@ function makeTableBody(){
     footerRow.appendChild(grandTotalData);
  }
 
-
+ 
+ 
  function custHr(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-let allCities = [];
+     return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+    let allCities = [];
 
 function City(name, minCust, maxCust, averageCookies, allCustHr, cookiePerCust, total) {
 
@@ -97,15 +94,20 @@ function City(name, minCust, maxCust, averageCookies, allCustHr, cookiePerCust, 
     this.cookiePerCust = cookiePerCust;
     this.total = total
 }
- let seattle = new City('Seattle', 23, 65, 6.3, [], [], 0);
+function handleSubmit(event) {
+   event.preventDefault();
+   let myLocation = event.target.myLocation.value;
+   
+}
+let seattle = new City('Seattle', 23, 65, 6.3, [], [], 0);
 
- let tokyo = new City('Tokyo', 3, 24, 1.2, [], [], 0);
- 
- let dubai = new City('Dubai', 11, 38, 3.7, [], [], 0);
+let tokyo = new City('Tokyo', 3, 24, 1.2, [], [], 0);
 
- let paris = new City('Paris', 20, 38, 2.3, [], [], 0);
+let dubai = new City('Dubai', 11, 38, 3.7, [], [], 0);
 
- let lima = new City('Lima', 2, 16, 4.6, [], [], 0);
+let paris = new City('Paris', 20, 38, 2.3, [], [], 0);
+
+let lima = new City('Lima', 2, 16, 4.6, [], [], 0);
 
 allCities.push(seattle, tokyo, dubai, paris, lima);
 console.log(allCities);
@@ -118,11 +120,13 @@ City.prototype.getCustHr = function() {
 }
 City.prototype.getCookPerCust = function() {
         this.getCustHr();
-    for(let i=0; i< timeHours.length; i++){
-        let cookies = Math.floor(this.allCustHr[i] * this.averageCookies)
-        this.cookiePerCust.push(cookies)
-        this.total += cookies;
+        for(let i=0; i< timeHours.length; i++){
+            let cookies = Math.floor(this.allCustHr[i] * this.averageCookies)
+            this.cookiePerCust.push(cookies)
+            this.total += cookies;
+        }
     }
-    }
-   
- renderHeader();
+    
+    renderHeader();
+    myLocation.addEventListener('submit', handleSubmit);
+    

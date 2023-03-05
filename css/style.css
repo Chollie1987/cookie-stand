@@ -21,6 +21,26 @@ body {
     
 }
 
+#location-form {
+    font-size: smaller;
+    font-weight: 500;
+    font-family: 'Rampart One', cursive;
+}
+
+#location-input {
+    margin-top: 40px;
+    font-family: 'Rampart One', cursive;
+}
+
+.button:hover {
+    transition-duration: .2s;
+    background-color:#467358;
+    border: none;
+    color: white;
+    border: 1px solid black;
+    
+}
+
 th, td {
     text-align: center;
     border: 2px solid black;
