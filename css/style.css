@@ -22,9 +22,11 @@ body {
 }
 
 #location-form {
+    text-align: center;
     font-size: smaller;
     font-weight: 500;
     font-family: 'Rampart One', cursive;
+
 }
 
 #location-input {
@@ -32,6 +34,18 @@ body {
     font-family: 'Rampart One', cursive;
 }
 
+#maxCustomer-input {
+    font-family: 'Rampart One', cursive;
+
+}
+#minCustomer-input {
+    font-family: 'Rampart One', cursive;
+}
+
+#avgCookiesCust-input {
+    font-family: 'Rampart One', cursive;
+
+}
 .button:hover {
     transition-duration: .2s;
     background-color:#467358;
@@ -42,13 +56,14 @@ body {
 }
 
 th, td {
+    font-size: medium;
     text-align: center;
     border: 2px solid black;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 tr{
-    font-weight: 600;
+    font-weight: 550;
     border: 2px solid black;
     font-family: Arial, Helvetica, sans-serif;
 }
