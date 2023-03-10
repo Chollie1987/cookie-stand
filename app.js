@@ -1,12 +1,51 @@
 'use strict'
 
+//----- Global variables -----//
 let tableEl = document.getElementById('tableEl')
 let seattleSales = document.getElementById('seattle');
 let locationInput = document.getElementById('location-form');
 
 let timeHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
+let allCities = [];
+
+
+//-------- Constructor Function ------//
+function City(name, minCust, maxCust, averageCookies, allCustHr, cookiePerCust, total) {
+
+    this.cityName = name;
+    this.minCust = minCust;
+    this.maxCust = maxCust;
+    this.averageCookies = averageCookies;
+    this.allCustHr = allCustHr;
+    this.cookiePerCust = cookiePerCust;
+    this.total = total
+    
+}
+
+City.prototype.getCustHr = function () {
+    for (let i = 0; i < timeHours.length; i++) {
+        let randomCustHr = custHr(this.minCust, this.maxCust)
+       
+        this.allCustHr.push(randomCustHr);
+    }
+}
+City.prototype.getCookPerCust = function () {
+    this.getCustHr();
+    for (let i = 0; i < timeHours.length; i++) {
+        let cookies = Math.floor(this.allCustHr[i] * this.averageCookies)
+        this.cookiePerCust.push(cookies)
+        this.total += cookies;
+    }
+}
+
+//--------- Regular Functions ------//
+function custHr(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 function renderHeader() {
+    console.log(tableEl)
     let headerRow = document.createElement('tr');
 
     tableEl.appendChild(headerRow);
@@ -23,8 +62,7 @@ function renderHeader() {
     let headerData = document.createElement('th');
     headerData.textContent = 'Daily Total';
     headerRow.appendChild(headerData);
-    makeTableBody();
-    makeFooter();
+   
 }
 
 function makeTableBody() {
@@ -35,8 +73,7 @@ function makeTableBody() {
         locationCell.textContent = allCities[i].cityName;
         storeRow.appendChild(locationCell);
         tableEl.appendChild(storeRow);
-        allCities[i].getCookPerCust()
-        console.log(allCities[i].cookiePerCust);
+        // allCities[i].getCookPerCust()
 
         for (let j = 0; j < allCities[i].cookiePerCust.length; j++) {
             let storeTd = document.createElement('td');
@@ -48,12 +85,9 @@ function makeTableBody() {
         storeTd.textContent = cityDailyTotal
         storeRow.appendChild(storeTd);
 
-
-
-
-
     }
 }
+
 function makeFooter() {
     let footerRow = document.createElement('tr');
     tableEl.appendChild(footerRow);
@@ -77,73 +111,43 @@ function makeFooter() {
     footerRow.appendChild(grandTotalData);
 }
 
-
-
-function custHr(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-let allCities = [];
-
-function City(name, minCust, maxCust, averageCookies, allCustHr, cookiePerCust, total) {
-
-    this.cityName = name;
-    this.minCust = minCust;
-    this.maxCust = maxCust;
-    this.averageCookies = averageCookies;
-    this.allCustHr = allCustHr;
-    this.cookiePerCust = cookiePerCust;
-    this.total = total
-}
-
+//-------Event Handler Function ----//
 function handleSubmit(event) {
     event.preventDefault();
-    console.log(event)
 
     let locationInput = event.target.locationInput.value;
-    let maxCustomerInput = event.target.maxCustomerInput.value;
-    let minCustomerInput = event.target.minCustomerInput.value;
-    console.log(event.target.avgCookiesCustInput);
-    let avgCookiesCust = event.target.avgCookiesCustInput.value;
-    console.log(avgCookiesCust)
-    let newCityInput = new City(locationInput, maxCustomerInput, minCustomerInput, avgCookiesCust);
+    let maxCustomerInput = Number(event.target.maxCustomerInput.value);
+    let minCustomerInput = Number(event.target.minCustomerInput.value);
+    let avgCookiesCust = Number(event.target.avgCookiesCustInput.value);
+    let newCityInput = new City(locationInput, maxCustomerInput, minCustomerInput, avgCookiesCust, [], [], 0);
+    newCityInput.getCookPerCust();
 
     allCities.push(newCityInput);
     tableEl.innerHTML = ''
-    // makeTableBody();
-   
-    document.querySelector('tfoot').remove();
-    displayFooterRow();
-
-
+    renderHeader();
+    makeTableBody();
+    makeFooter();
 
 }
+
+//--------Instantiating Cities ----//
+
 let seattle = new City('Seattle', 23, 65, 6.3, [], [], 0);
-
+seattle.getCookPerCust()
 let tokyo = new City('Tokyo', 3, 24, 1.2, [], [], 0);
-
+tokyo.getCookPerCust()
 let dubai = new City('Dubai', 11, 38, 3.7, [], [], 0);
-
+dubai.getCookPerCust()
 let paris = new City('Paris', 20, 38, 2.3, [], [], 0);
-
+paris.getCookPerCust()
 let lima = new City('Lima', 2, 16, 4.6, [], [], 0);
-
+lima.getCookPerCust()
 allCities.push(seattle, tokyo, dubai, paris, lima);
-console.log(allCities);
 
-City.prototype.getCustHr = function () {
-    for (let i = 0; i < timeHours.length; i++) {
-        let randomCustHr = custHr(this.minCust, this.maxCust)
-        this.allCustHr.push(randomCustHr);
-    }
-}
-City.prototype.getCookPerCust = function () {
-    this.getCustHr();
-    for (let i = 0; i < timeHours.length; i++) {
-        let cookies = Math.floor(this.allCustHr[i] * this.averageCookies)
-        this.cookiePerCust.push(cookies)
-        this.total += cookies;
-    }
-}
+
+//------Function Calls-----//
 
 renderHeader();
+makeTableBody();
+makeFooter();
 locationInput.addEventListener('submit', handleSubmit);

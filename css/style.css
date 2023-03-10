@@ -70,11 +70,10 @@ tr{
 
 .sales-title {
     color: #467358;
-    font-size: large;
+    font-size: larger;
     font-weight: 900;
-    font-family: 'Rampart One', cursive;
+    font-family:'Libre Baskerville', serif;
 }
-
 header {
     text-align: center;
     font-family: 'Rampart One', cursive;
